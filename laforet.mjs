@@ -5,7 +5,6 @@ export default async function fetchBookingInfo(city) {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    // Écouteur pour les événements de console de la page.
     page.on('console', msg => console.log('PAGE LOG:', msg.text()));
 
     console.log('Visite de la page...');
@@ -13,7 +12,7 @@ export default async function fetchBookingInfo(city) {
     //await page.goto(`https://www.laforet.com/agence-immobiliere/annecy-parmelan/acheter?next=88`);
 
     console.log('Attente des sélecteurs...');
-    await page.waitForSelector('.apartment-card'); // Sélecteur pour les cartes de propriété
+    await page.waitForSelector('.apartment-card'); 
 
     console.log('Récupération des données...');
     const results = await page.evaluate(() => {
