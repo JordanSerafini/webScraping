@@ -15,17 +15,22 @@ export default async function fetchBookingInfo(city) {
   // Récupérez les titres des établissements et leurs descriptions
   const results = await page.evaluate(() => {
     const titleElements = Array.from(document.querySelectorAll('[data-testid="title"]'));
-    const descriptionElements = Array.from(document.querySelectorAll('[class="abf093bdfe"]'));
-
+    let descriptionElements = Array.from(document.querySelectorAll('[class="abf093bdfe"]'));
+    
+    // Supprimez les deux premières descriptions
+    descriptionElements = descriptionElements.slice(2);
+  
     const hotelResults = titleElements.map((titleElement, index) => {
       return {
         name: titleElement.innerText.trim(),
+        // Utilisez l'index correct pour les descriptions après avoir supprimé les deux premiers éléments
         description: descriptionElements[index] ? descriptionElements[index].innerText.trim() : 'Description non disponible'
       };
     });
-
+  
     return hotelResults;
   });
+  
   console.log(results);
 
   await browser.close();
