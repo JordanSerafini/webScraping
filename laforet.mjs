@@ -5,7 +5,7 @@ export default async function fetchBookingInfo(city) {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+    page.on('console', msg => console.log('PAGE LOG:', msg.text())); // afficher les consoles log
 
     console.log('Visite de la page...');
     await page.goto(`https://www.laforet.com/agence-immobiliere/${city}/acheter?next=88`);

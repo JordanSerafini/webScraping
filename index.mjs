@@ -23,6 +23,7 @@ rl.question('Veuillez entrer le nom de la ville pour la recherche : ', async (ci
   try {
     const laforetInfo = await fetchLaForetinfo(city);
     console.log(laforetInfo);
+    console.log('Vous avez récupéré ' + laforetInfo.length + " biens a " + city);
   } catch (error) {
     console.error('Erreur lors de la récupération des informations :', error);
   }
