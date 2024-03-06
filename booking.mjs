@@ -32,14 +32,6 @@ export default async function fetchBookingInfo(city) {
     return hotelResults;
   });
 
-    const moreResultsSelector = 'button[aria-label="Afficher plus de résultats"]';
-    const moreResultsButton = await page.$(moreResultsSelector);
-    if (moreResultsButton) {
-        await moreResultsButton.click();
-        await page.waitForTimeout(2000);
-    }
-    
-
 
 
   await browser.close();
